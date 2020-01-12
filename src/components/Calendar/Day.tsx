@@ -18,6 +18,7 @@ export default function Day(props: DayProps) {
     onMouseEnter,
     onMouseLeave
   } = props;
+  const currentDate = new Date();
   if (fullDate === null) {
     return <div className="EmptyStateDay" />
   }
@@ -36,6 +37,15 @@ export default function Day(props: DayProps) {
       onMouseLeave={() => onMouseLeave()}
     >
       {date}
+      <div
+        className={
+          currentDate.getDate() === fullDate.getDate()
+          && currentDate.getMonth() === fullDate.getMonth()
+          && currentDate.getFullYear() === fullDate.getFullYear()
+          ? "Point Point--current"
+          : "Point"
+        }
+      />
     </button>
   );
 };

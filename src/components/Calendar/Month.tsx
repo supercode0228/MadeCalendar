@@ -23,7 +23,7 @@ type MonthProps = {
 
 const Month = (props: MonthProps) => {
   const [hoveredDate, onHoverDate] = useState(null);
-  const { month, year } = props;
+  const { month, year, date } = props;
   const renderWeek = (fullDate: any, dayIndex: any) => {
     const { onDayClick } = props;
 
@@ -40,14 +40,14 @@ const Month = (props: MonthProps) => {
         />
       );
     }
-    const date = fullDate.getDate();
+    const t_date = fullDate.getDate();
     return (
       <Day
         key={dayIndex}
         fullDate={fullDate}
         onClick={onDayClick}
-        selected={date === props.date}
-        hovering={date === hoveredDate}
+        selected={t_date === date}
+        hovering={t_date === hoveredDate}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       />
@@ -72,7 +72,7 @@ const Month = (props: MonthProps) => {
     )
   });
 
-  const weeks: any = getWeeksForMonth(2, 2020);
+  const weeks: any = getWeeksForMonth(month, year);
   const weeksMarkup = weeks.map((week: any, index: any) => {
     return (
       <div role="row" className="Week" key={index}>

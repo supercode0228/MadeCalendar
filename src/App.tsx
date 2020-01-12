@@ -14,7 +14,9 @@ const App: React.FC = () => {
   }
   return (
     <div className="App">
-      <Calendar fullDate={selectedDate} onDayClick={handleDayClick} />
+      <Calendar
+        fullDate={selectedDate}
+        onDayClick={handleDayClick} />
     </div>
   );
 }

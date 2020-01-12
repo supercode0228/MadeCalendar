@@ -20,6 +20,7 @@
 }
 
 .Day {
+  position: relative;
   display: block;
   flex: 1 0 0%;
   width: 14.28571%;
@@ -63,4 +64,17 @@
 .EmptyStateDay + .EmptyStateDay,
 .EmptyStateDay + .Day {
   margin-left: -1px;
+}
+
+.Point {
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  background-color: transparent;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.Point--current {
+  background-color: #1b76de;
 }

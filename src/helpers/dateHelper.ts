@@ -1,3 +1,5 @@
+import Moment from 'moment';
+
 const WEEK_LENGTH = 7;
 
 const months = [
@@ -21,8 +23,8 @@ export function getCurrentMonthName() {
   return `${n} ${d.getFullYear()}`
 }
 
-export function getMonthName(index: number) {
-  return months[index];
+export function getMonthName(index: number, year: any) {
+  return `${months[index]} ${year}`;
 }
 
 export function abbreviationFromWeekday(weekday: string) {
@@ -32,13 +34,15 @@ export function abbreviationFromWeekday(weekday: string) {
 export function getWeeksForMonth(month: number, year: number) {
   const firstOfMonth = new Date(year, month, 1);
   const firstDayOfWeek = firstOfMonth.getDay();
-  console.log('firstDayOfWeek-->', firstDayOfWeek);
+  console.log('firstOfMonth-->', firstOfMonth);
   let weeks = [[]];
 
   let currentWeek: any = weeks[0];
   let currentDate = firstOfMonth;
 
   for (let i = 0; i < firstDayOfWeek; i++) {
+    
+    const inActiveDay = Moment(currentDate, 'MMDDYYYY').subtract(firstDayOfWeek - i, "days").toDate();
     currentWeek.push(null);
   }
 
